@@ -25,9 +25,18 @@
             }
         }
 
-        private function saveData($file, $content){
+		private function saveData($file, $content){
             $this->backupToRepeatRequest = is_array($content) ? $content[1]:unserialize($content);
-            file_put_contents($file, is_array($content) ? $content[1]:($content));
+			$backup = file_get_contents($file);
+			// $content = serialize([]);
+			file_put_contents($file, ($put=(is_array($content) ? $content[1]:($content))));
+			if(filesize($file) < 150 && strlen($put) < 15 ){
+				file_put_contents($file, $backup);
+				$data = date("d/m/Y H:i:s") . ' -> Erro ao gravar no banco de dados. '.PHP_EOL."\$content: " . substr(json_encode($content),0,500).PHP_EOL.PHP_EOL;
+				$fp = fopen("{$file}.log", 'a');
+				fwrite($fp, $data);
+				fclose($fp);
+			}
         }
 
         private function like(String $needle, String $haystack, String $options = ""){

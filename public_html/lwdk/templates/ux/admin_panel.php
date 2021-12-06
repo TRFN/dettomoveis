@@ -1,6 +1,6 @@
 <?php
     class admin_panel extends APPObject {
-        use
+		use
             function_group_dates,
             admin_users,
             admin_paginas,
@@ -12,7 +12,7 @@
         function __construct(){
             # CONFIGURATIONS #
             $this->rootDir("/admin/");
-            $this->uiTemplateDefault("admin/application");
+			$this->uiTemplateDefault("admin/application");
             header("Content-Type: text/html;charset=utf-8");
             $this->empresa = "Painel Administrativo";
         }
@@ -92,8 +92,8 @@
             ));
 
             $vars = (array(
-                "logotipo" => "/images/logo-mini.png",
-				"logotipo2" => "/images/logo-mini2.png",
+                "logotipo" => "/assets/img/logo.png",
+				"logotipo2" => "/assets/img/logo-branca.png",
                 "TITLE" => "Painel Admin",
                 "empresa" => $this->empresa,
 				"hidden" => 'position: fixed; top: -100vw; left: -100vh; width: 0; height: 0; margin: 0; padding: 0; overflow: hidden; opacity: 0; display: none; visibility: hidden;'

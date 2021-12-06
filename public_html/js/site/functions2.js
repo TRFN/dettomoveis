@@ -209,7 +209,7 @@ const favoritar_produto = window.favoritar_produto = (function favoritar_produto
 });
 
 const CalcShipping = window.CalcShipping = ((valor, cep, passive=false) => {
-    cep = cep.split(/[^0-9]/).join('');
+	cep = cep.split(/[^0-9]/).join('');
 
     if(cep.length !== 8){
         return swal.fire("Insira um C.E.P. v&aacute;lido.");

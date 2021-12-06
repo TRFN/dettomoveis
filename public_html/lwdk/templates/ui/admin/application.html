@@ -47,6 +47,7 @@
         <link rel="shortcut icon" href="assets/demo/media/img/logo/favicon.ico" />
 		<link rel="stylesheet" href="/css/admin/jquery.tag-editor.css">
         <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+		<script async src="/js/lwdk/boot.js" lwdk-vars="on" lwdk-addons></script>
         <script>
             WebFont.load({
                 google: { families: ["Poppins:300,400,500,600,700", "Roboto:300,400,500,600,700"] },
@@ -313,7 +314,7 @@
 			});
 
 			$(".cep").each(function(){
-				One(this).inputmask("99.999-999", {"placeholder": ""});
+				One(this).inputmask("99999-999", {"placeholder": ""});
 			});
 
             String($(".money").length) != "0" && $(".money").inputmask('decimal', {
@@ -386,6 +387,12 @@
 		  }
 		});
 		</script>
-
+		<script async>
+			document.addEventListener("DOMContentLoaded", () => {
+				LWDK.include("core/vars");
+				LWDK.include("plugins/cookies");
+				LWDK.include("plugins/cep");
+			}, true);
+		</script>
     </body>
 </html>

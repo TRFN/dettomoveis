@@ -3,7 +3,7 @@
     <div class="m-subheader ">
     	<div class="d-flex align-items-center">
     		<div class="mr-auto">
-    			<h3 class="m-subheader__title">Contatos da Loja</h3>
+    			<h3 class="m-subheader__title">Social e Mídias</h3>
     		</div>
     		<div>
                 <div class="col-7 text-right">
@@ -20,11 +20,43 @@
     				<div class="tab-content">
     					<div class="tab-pane active" id="contatos">
     						<div class="m-form m-form--fit m-form--label-align-right">
-    							<div class="m-portlet__body">
+    							<div class="">
                                     <div class="row form-group m-form__group">
-                                        <div class="col-12">
-                                            <div class="row m--margin-bottom-10">
-                                                <div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
+                                        <div class="col-10 offset-1">
+                                            <div class="row m--margin-bottom-10 m-portlet__body">
+												<div class="col-sm-12 p-4 my-2 pt-0 mt-0">
+                                                    <h3 style="color: #555; border-bottom: 2px solid #CCC; padding-bottom: 8px; width: 80%;">Configurações Google</h3>
+                                                </div>
+
+												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
+                                                    <label>ID Analytics:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                        		<i class="  la-1x  la la-bar-chart"></i>&nbsp;
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" data-name="g_analytics" class="form-control m-input" placeholder="X-XXXXXXXX-X" data-option="text" />
+                                                    </div>
+                                                </div>
+												<!-- <div class="col-lg-1 col-md-0 col-sm-12 p-4 my-2">&nbsp;</div> -->
+												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
+                                                    <label>ID Google Tag Manager:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="  la-1x  la la-pie-chart"></i>&nbsp;
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" data-name="g_tag_manager" class="form-control m-input" placeholder="X-XXXXXXXX-X" data-option="text" />
+                                                    </div>
+                                                </div>
+												<!-- <hr class="col-sm-4 p-4 mt-4 mb-0" /> -->
+												<div class="col-sm-12 p-4 my-2 pt-0 mt-0">
+                                                    <h3 style="color: #555; border-bottom: 2px solid #CCC; padding-bottom: 8px; width: 80%;">Contatos</h3>
+                                                </div>
+
+												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
                                                     <label>Whatsapp:</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -37,14 +69,14 @@
                                                 </div>
 
 												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
-                                                    <label>Youtube:</label>
+                                                    <label>Telefone Fixo:</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
                                                             <span class="input-group-text">
-                                                                <i class="la la-youtube"></i>
+                                                                <i class="  la-1x  la la-phone"></i>&nbsp;
                                                             </span>
                                                         </div>
-                                                        <input type="text" data-name="youtube" class="form-control m-input" placeholder="https://www.youtube.com/c/xxxxxxxxxxxxx" data-option="text" />
+                                                        <input type="text" data-name="telefone" class="form-control m-input phone" placeholder="(99) 99999-9999" data-option="text" />
                                                     </div>
                                                 </div>
 
@@ -60,18 +92,6 @@
                                                     </div>
                                                 </div>
 
-                                                <div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
-                                                    <label>Facebook:</label>
-                                                    <div class="input-group">
-                                                        <div class="input-group-prepend">
-                                                            <span class="input-group-text">
-                                                                <i class="la la-facebook"></i>
-                                                            </span>
-                                                        </div>
-                                                        <input type="text" data-name="facebook" class="form-control m-input" placeholder="https://www.facebook.com/xxxxxx/" data-option="text" />
-                                                    </div>
-                                                </div>
-
 												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
                                                     <label>Email:</label>
                                                     <div class="input-group">
@@ -84,6 +104,22 @@
                                                     </div>
                                                 </div>
 
+												<div class="col-sm-12 p-4 my-2 pt-0 mt-0">
+                                                    <h3 style="color: #555; border-bottom: 2px solid #CCC; padding-bottom: 8px; width: 80%;">Endereço</h3>
+                                                </div>
+
+												<div class="col-lg-2 col-md-6 col-sm-12 p-4 my-2">
+                                                    <label>Cep:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="  la-1x  la la-clipboard"></i>&nbsp;
+                                                            </span>
+                                                        </div>
+                                                        <input onkeydown="if(event.keyCode == 13){ this.blur(); return false; }" onblur="return pesquisar_cep(this)" type="text" data-name="endereco-cep" class="form-control m-input cep" placeholder="00000-000" data-option="text" />
+                                                    </div>
+                                                </div>
+
 												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
                                                     <label>Endereço:</label>
                                                     <div class="input-group">
@@ -92,11 +128,35 @@
                                                                 <i class="la la-map"></i>
                                                             </span>
                                                         </div>
-                                                        <input type="text" data-name="endereco-texto" class="form-control m-input" placeholder="Rua X, nY bairro Z" data-option="text" />
+                                                        <input type="text" data-name="endereco" class="form-control m-input" placeholder="Ex: Rua Gonçalves Dias, 872" data-option="text" />
                                                     </div>
                                                 </div>
 
-												<div class="col-lg-4 col-md-6 col-sm-12 p-4 my-2">
+												<div class="col-lg-3 col-md-6 col-sm-12 p-4 my-2">
+                                                    <label>Bairro:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="  la-1x  la la-map-marker"></i>&nbsp;
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" data-name="endereco-bairro" class="form-control m-input" placeholder="Ex: Funcionários" data-option="text" />
+                                                    </div>
+                                                </div>
+
+												<div class="col-lg-3 col-md-6 col-sm-12 p-4 my-2">
+                                                    <label>Cidade / Estado:</label>
+                                                    <div class="input-group">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">
+                                                                <i class="  la-1x  la la-bandcamp"></i>&nbsp;
+                                                            </span>
+                                                        </div>
+                                                        <input type="text" data-name="endereco-cidade-estado" class="form-control m-input" placeholder="Ex: Belo Horizonte / MG" data-option="text" />
+                                                    </div>
+                                                </div>
+
+												<div class="col-lg-6 col-md-6 col-sm-12 p-4 my-2">
                                                     <label>Google Maps (URL Link):</label>
                                                     <div class="input-group">
                                                         <div class="input-group-prepend">
@@ -150,3 +210,34 @@
 
 <script lwdk-addons lwdk-vars="on" src="js/admin/forms/repeater.js"></script>
 <script lwdk-addons lwdk-vars="on" src="js/admin/forms/contatos.js"></script>
+
+<script async>
+	const pesquisar_cep = (function pesquisar_cep(e){
+		function validate(e, state){
+			e.classList.remove("is-valid");
+			e.classList.remove("is-invalid");
+			if(state == false){
+				e.classList.add("is-invalid");
+				setTimeout(() => e.classList.remove("is-invalid"), 3e3);
+			} else {
+				e.classList.add("is-valid");
+				setTimeout(() => e.classList.remove("is-valid"), 3e3);
+			}
+			return (state !== false);
+		}
+
+		function setVal(input, val){
+			return(document.querySelector(`[data-name="${input}"]`).value = val);
+		}
+
+		if(LWDK.cep(e.value, function(data){
+			(validate(e, data)) && confirm_msg("Deseja localizar o endereço a partir do CEP ?", () => (
+				setVal("endereco", data.logradouro),
+				setVal("endereco-bairro", data.bairro),
+				setVal("endereco-cidade-estado", `${data.localidade} - ${data.uf}`)
+			), "question");
+		}) == false){
+			return validate(e, false);
+		}
+	});
+</script>
