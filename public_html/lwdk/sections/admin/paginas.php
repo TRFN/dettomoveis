@@ -176,19 +176,7 @@
 
             $ordens = "";
 
-            $opcoes = array(
-				"Home" => "/",
-				"Como Chegar" => "/como_chegar/",
-                "Fale Conosco" => "/fale_conosco/",
-				"Doações" => "/doacoes/",
-				"Missas" => "/missas/",
-				"Fotos" => "/fotos/",
-				"Videos" => "/videos/",
-				"Rádio" => "https://radiosaomiguel.com/",
-				"Novo Templo" => "/novo_templo/",
-				"Orações" => "/oracoes/",
-				"Vela Virtual" => "/vela_virtual/"
-            );
+            $opcoes = [];
 
 			$paginas = parent::database()->query("paginas", "tp=prod and ativo=true");
 
@@ -200,6 +188,13 @@
             $opcoes_html = "";
 
 			ksort($opcoes);
+
+			$opcoes = array_merge(array(
+				"Home" => "/",
+				"Produtos" => "/produtos/",
+                "A Detto" => "/a_detto/",
+				"Fale Conosco" => "/fale_conosco/"
+            ), $opcoes);
 
             foreach($opcoes as $titulo=>$url){
                 $opcoes_html .= "<option value='{$url}'>{$titulo}</option>";

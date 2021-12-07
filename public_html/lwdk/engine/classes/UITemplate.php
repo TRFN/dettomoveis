@@ -76,8 +76,8 @@
         }
 
         function loadScripts(){
-            $this->applyVars(array("LWDK::AJAX"=>__dinamicJS::ajaxCore()));
-            $this->applyVars(array("LWDK::JSINIT"=>__dinamicJS::initScripts()));
+            // $this->applyVars(array("LWDK::AJAX"=>__dinamicJS::ajaxCore()));
+            // $this->applyVars(array("LWDK::JSINIT"=>__dinamicJS::initScripts())); # Obsolete / Old
         }
 
         function uiTemplate(String $set){

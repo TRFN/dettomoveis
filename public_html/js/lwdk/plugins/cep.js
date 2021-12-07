@@ -1,5 +1,5 @@
 (function(){
-	function lwdk_cep_query(a, f){
+	function cepQueryAddress(a, f){
 
 		if(typeof f !== "function"){
 			f = (r) => (LWDK.cep.result = r);
@@ -40,7 +40,7 @@
 		return _ajax_(a, f);
 	}
 
-	LWDK.cep = (a = -1, f = -1) => lwdk_cep_query(a, f);
+	LWDK.cep = (a = -1, f = -1) => cepQueryAddress(a, f);
 
 	LWDK.cep.result = false;
 })();

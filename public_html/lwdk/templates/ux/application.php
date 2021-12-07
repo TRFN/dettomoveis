@@ -1,6 +1,7 @@
 <?php
     class application extends APPObject {
-		use paginas_fixas;
+		use paginas_fixas,
+			template_site;
 
         function __construct(){
             # CONFIGURATIONS #
@@ -9,10 +10,5 @@
             header("Content-Type: text/html;charset=utf-8");
             $this->empresa = "Detto Móveis - Móveis para Escritório em BH";
         }
-
-        // function page_main($content){
-		// 	header("Content-Type: text/plain");
-        //     var_dump($content);
-        // }
     }
 ?>

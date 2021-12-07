@@ -415,4 +415,99 @@ window.errorRequest = (function(action=null, text='N&atilde;o foi poss&iacute;ve
       },
     },
   });
+
+  LWDKInitFunction.addFN(function () {
+	  String($(".table").length) != "0" &&
+		  $(".table").each(function () {
+			  window["DataTable__" + this.id.split(/[^a-z0-9]/).join("_")] = One(this, "tabela-aplicada").DataTable({ language: { url: "//cdn.datatables.net/plug-ins/1.10.22/i18n/Portuguese-Brasil.json" } });
+		  });
+
+	  $(".tel").each(function () {
+		  One(this).inputmask("(99) 99999999[9]", { placeholder: "" });
+	  });
+
+	  $(".cep").each(function () {
+		  One(this).inputmask("99999-999", { placeholder: "" });
+	  });
+
+	  String($(".money").length) != "0" &&
+		  $(".money").inputmask("decimal", {
+			  alias: "numeric",
+			  groupSeparator: ".",
+			  autoGroup: true,
+			  digits: 2,
+			  radixPoint: ",",
+			  digitsOptional: false,
+			  allowMinus: false,
+			  prefix: "R$ ",
+			  placeholder: "0,00",
+		  });
+
+	  $(".tags").each(function () {
+		  LWDKExec(() =>
+			  One(this).tagEditor({
+				  placeholder: "Digite uma tag e pressione enter...",
+			  })
+		  );
+	  });
+
+	  $("[data-switch]").each(function () {
+		  $(this).data("notexec", true);
+		  $(this).bootstrapSwitch("state", $(this).data("value"), false);
+		  $(this).data("notexec", false);
+	  });
+
+	  LWDKInitFunction.addFN(LWDKLinks);
+
+	  setTimeout(() => $("#m_aside_left_close_btn")[0].click(), 600);
+
+	  LWDKExec(() =>
+		  One(".cpfcnpj").keydown(function () {
+			  try {
+				  $(this).inputmask("remove");
+			  } catch (e) {}
+
+			  var tamanho = $(this).val().length;
+			  try {
+				  var elem = this;
+				  setTimeout(function () {
+					  if (tamanho < 15) {
+						  $(elem).inputmask("999.999.999-99[9][9]", { placeholder: "" });
+					  } else {
+						  $(elem).inputmask("99.999.999/9999-99", { placeholder: "" });
+					  }
+
+					  elem.selectionStart = elem.selectionEnd = 10000;
+				  }, 0);
+
+				  var currentValue = $(this).val();
+				  $(this).val("");
+				  $(this).val(currentValue);
+			  } catch (e) {}
+		  })
+	  );
+  });
+
+  window.imprimir_contrato = function imprimir_contrato(contrato_id) {
+	  window.open(
+		  `/admin/contrato/${contrato_id}/`,
+		  "targetWindow",
+		  `toolbar=no,location=no,status=no,menubar=no,scrollbars=yes,resizable=yes,width=` +
+			  String(screen.width * 0.8) +
+			  `,height=` +
+			  String(screen.height * 0.7) +
+			  `, top=` +
+			  String(screen.height * 0.1) +
+			  `, left=` +
+			  String(screen.width * 0.1)
+	  );
+  };
+
+  Object.defineProperty(Array.prototype, "chunk", {
+	  value: function (chunkSize) {
+		  var R = [];
+		  for (var i = 0; i < this.length; i += chunkSize) R.push(this.slice(i, i + chunkSize));
+		  return R;
+	  },
+  });
 })(jQuery);

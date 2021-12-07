@@ -7,14 +7,14 @@
         <link href="https://www.dettomoveis.com.br/favicon.png" rel="shortcut icon" />
         <link href="https://www.dettomoveis.com.br/favicon.png" rel="apple-touch-icon" />
         <link href="https://www.dettomoveis.com.br/favicon.png" rel="shortcut icon" type="image/x-icon" />
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-FCER6DMSSN"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id={g_analytics}"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
             gtag("js", new Date());
-            gtag("config", "G-FCER6DMSSN");
+            gtag("config", "{g_analytics}");
         </script>
         <script>
             (function (w, d, s, l, i) {
@@ -26,7 +26,7 @@
                 j.async = true;
                 j.src = "https://www.googletagmanager.com/gtm.js?id=" + i + dl;
                 f.parentNode.insertBefore(j, f);
-            })(window, document, "script", "dataLayer", "GTM-N824B5P");
+            })(window, document, "script", "dataLayer", "{g_tag_manager}");
         </script>
         <title itemprop="name">Detto Móveis - Móveis para Escritório em BH</title>
         <meta charset="utf-8" />
@@ -59,10 +59,29 @@
         <link rel="stylesheet" href="assets/css/theme.min.css" />
         <link rel="stylesheet" href="assets/css/themes/opus.css" />
         <script async src="assets/vendors/modernizr.min.js"></script>
-		<script src="/js/lwdk/boot.js" async></script>
+		<!-- LWDK ENGINE With VanillaJS //MAIN// -->
+	        <script src="/js/lwdk/boot.js"></script>
+			<script>
+				/* Additional Configuration */
+
+				LWDK.debug.active = 1;
+				// LWDK.path = "/js/lwdk/";
+			</script>
+			<script src="/js/lwdk/compatibility.js?url-prefix={URLPrefix}"></script>
+	        <script>
+	            LWDK.init(() => {
+					LWDK.include("plugins/badWords");
+	                LWDK.include("plugins/cookies");
+	                LWDK.include("plugins/cep");
+					LWDK.include("core/vars");
+					LWDK.include("core/step");
+					LWDK.include("core/css");
+	            });
+	        </script>
+        <!-- LWDK ENGINE With VanillaJS //END// -->
     </head>
     <body class="woocommerce single" data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="modern" data-mobile-nav-scheme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-N824B5P" height="0" width="0" style="display: none; visibility: hidden;"></iframe></noscript>
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={g_tag_manager}" height="0" width="0" style="display: none; visibility: hidden;"></iframe></noscript>
         <div id="wrap">
             <header class="main-header main-header-overlay" data-sticky-header="true" data-sticky-options='{"stickyTrigger": "first-section"}'>
                 <div class="secondarybar-wrap bb-fade-white-015">
@@ -73,17 +92,17 @@
                                     <div class="header-module">
                                         <div class="iconbox iconbox-inline iconbox-xs">
                                             <div class="iconbox-icon-wrap">
-                                                <span class="iconbox-icon-container"> <i class="icon-ion-ios-call"></i> </span>
+                                                <span class="iconbox-icon-container">&nbsp;<i class="icon-ion-ios-call"></i>&nbsp;</span>
                                             </div>
-                                            <h3 class="font-size-14"><a href="tel:+553135049594" target="_blank"> (31) 3504-9594</a></h3>
+                                            <h3 class="font-size-14"><a href="tel:+55{telefone}" target="_blank">&nbsp;{telefone}</a></h3>
                                         </div>
                                     </div>
                                     <div class="header-module">
                                         <div class="iconbox iconbox-inline iconbox-xs ld_header_iconbox_5c51ac479407f" id="ld_header_iconbox_5c51ac479407f">
                                             <div class="iconbox-icon-wrap">
-                                                <span class="iconbox-icon-container"> <i class="icon-md-mail"></i> </span>
+                                                <span class="iconbox-icon-container">&nbsp;<i class="icon-md-mail"></i>&nbsp;</span>
                                             </div>
-                                            <h3 class="font-size-14"><a href="mailto:contato@dettomoveis.com.br" target="_blank">contato@dettomoveis.com.br</a></h3>
+                                            <h3 class="font-size-14"><a href="mailto:{email}" target="_blank">{email}</a></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -91,9 +110,9 @@
                                     <div class="header-module">
                                         <div class="iconbox iconbox-inline iconbox-xs ld_header_iconbox_5c51ac479407f" id="ld_header_iconbox_5c51ac479407f">
                                             <div class="iconbox-icon-wrap">
-                                                <span class="iconbox-icon-container"> <i class="fa fa-map-marker"></i> </span>
+                                                <span class="iconbox-icon-container">&nbsp;<i class="fa fa-map-marker"></i>&nbsp;</span>
                                             </div>
-                                            <h3 class="font-size-14"><a href="https://goo.gl/maps/hshBGs4m3VXL1DHS9" target="_blank">Rua Gonçalves Dias, 872 - 2b - Funcionários / BH</a></h3>
+                                            <h3 class="font-size-14"><a href="{endereco-url}" target="_blank">{endereco} - {endereco-bairro}</a></h3>
                                         </div>
                                     </div>
                                     <div class="header-module">
@@ -102,10 +121,10 @@
                                     <div class="header-module lqd-show-on-mobile">
                                         <ul class="social-icon social-icon-md">
                                             <li>
-                                                <a href="https://www.instagram.com/dettomobiliario/" target="_blank"><i class="fa fa-instagram"></i></a>
+                                                <a href="{instagram}" target="_blank"><i class="fa fa-instagram"></i></a>
                                             </li>
                                             <li>
-                                                <a href="https://api.whatsapp.com/send?phone=553135049594" target="_blank" target="_blank"><i class="fa fa-whatsapp"></i></a>
+                                                <a href="https://api.whatsapp.com/send?phone=+55{whatsapp}" target="_blank" target="_blank"><i class="fa fa-whatsapp"></i></a>
                                             </li>
                                         </ul>
                                     </div>
@@ -122,8 +141,8 @@
                                     <div class="navbar-header">
                                         <a class="navbar-brand" href="index.html" rel="home">
                                             <span class="navbar-brand-inner">
-                                                <img class="logo-dark" src="./assets/img/logo.png" alt="Detto Móveis" /> <img class="logo-sticky" src="./assets/img/logo-mobile.png" alt="Detto Móveis" />
-                                                <img class="mobile-logo-default" src="./assets/img/logo-mobile.png" alt="Detto Móveis" /> <img class="logo-default" src="./assets/img/logo-branca.png" alt="Detto Móveis" />
+                                                <img class="logo-dark" src="./assets/img/logo.png" alt="Detto Móveis" />&nbsp;<img class="logo-sticky" src="./assets/img/logo-mobile.png" alt="Detto Móveis" />
+                                                <img class="mobile-logo-default" src="./assets/img/logo-mobile.png" alt="Detto Móveis" />&nbsp;<img class="logo-default" src="./assets/img/logo-branca.png" alt="Detto Móveis" />
                                             </span>
                                         </a>
                                         <button
@@ -134,114 +153,14 @@
                                             aria-expanded="false"
                                             data-changeclassnames='{"html": "mobile-nav-activated overflow-hidden"}'
                                         >
-                                            <span class="sr-only">Toggle navigation</span> <span class="bars"> <span class="bar"></span> <span class="bar"></span> <span class="bar"></span> </span>
+                                            <span class="sr-only">Toggle navigation</span>&nbsp;<span class="bars">&nbsp;<span class="bar"></span>&nbsp;<span class="bar"></span>&nbsp;<span class="bar"></span>&nbsp;</span>
                                         </button>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <div class="collapse navbar-collapse" id="main-header-collapse">
                                         <ul id="primary-nav" class="main-nav nav align-items-lg-stretch justify-content-lg-end" data-submenu-options='{"toggleType":"fade", "handler":"mouse-in-out"}'>
-                                            <li>
-                                                <a href="index.html">
-                                                    <span class="link-icon"></span>
-                                                    <span class="link-txt">
-                                                        <span class="link-ext"></span>
-                                                        <span class="txt">
-                                                            Home <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li class="menu-item-has-children">
-                                                <a href="produtos.html">
-                                                    <span class="link-icon"></span>
-                                                    <span class="link-txt">
-                                                        <span class="link-ext"></span>
-                                                        <span class="txt">
-                                                            Produtos <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                                <ul class="nav-item-children">
-                                                    <li>
-                                                        <a href="cadeiras.html">
-                                                            <span class="link-icon"></span>
-                                                            <span class="link-txt">
-                                                                <span class="link-ext"></span>
-                                                                <span class="txt">
-                                                                    Cadeiras <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="mobiliarios.html">
-                                                            <span class="link-icon"></span>
-                                                            <span class="link-txt">
-                                                                <span class="link-ext"></span>
-                                                                <span class="txt">
-                                                                    Mobiliários <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="ambiente-externo.html">
-                                                            <span class="link-icon"></span>
-                                                            <span class="link-txt">
-                                                                <span class="link-ext"></span>
-                                                                <span class="txt">
-                                                                    Ambiente Externo <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="persianas.html">
-                                                            <span class="link-icon"></span>
-                                                            <span class="link-txt">
-                                                                <span class="link-ext"></span>
-                                                                <span class="txt">
-                                                                    Persianas <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="pisos.html">
-                                                            <span class="link-icon"></span>
-                                                            <span class="link-txt">
-                                                                <span class="link-ext"></span>
-                                                                <span class="txt">
-                                                                    Pisos <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a href="a-detto.html">
-                                                    <span class="link-icon"></span>
-                                                    <span class="link-txt">
-                                                        <span class="link-ext"></span>
-                                                        <span class="txt">
-                                                            A Detto <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="contato.html">
-                                                    <span class="link-icon"></span>
-                                                    <span class="link-txt">
-                                                        <span class="link-ext"></span>
-                                                        <span class="txt">
-                                                            Fale Conosco <span class="submenu-expander"> <i class="fa fa-angle-down"></i> </span>
-                                                        </span>
-                                                    </span>
-                                                </a>
-                                            </li>
+                                            {menu-principal}
                                         </ul>
                                     </div>
 									<div class="header-module lqd-show-on-mobile">
@@ -255,7 +174,7 @@
 											<div class="ld-module-dropdown collapse" id="cart-5c51ac479636a" aria-expanded="false" role="tablist">
 												<div class="ld-cart-foot pt-20">
 													<div class="ld-cart-total">
-														<span class="ld-cart-total-label font-weight-bold text-uppercase ltr-sp-175" style="color: #fff; font-size: 15px;"> Itens do Orçamento</span>
+														<span class="ld-cart-total-label font-weight-bold text-uppercase ltr-sp-175" style="color: #fff; font-size: 15px;">&nbsp;Itens do Orçamento</span>
 													</div>
 
 												</div>
@@ -372,22 +291,22 @@
                             <div class="lqd-column col-md-3 col-sm-6 pb-35">
                                 <h3 class="widget-title mb-30 text-white font-size-15 text-uppercase ltr-sp-2">Contato</h3>
                                 <p>
-                                    <a href="tel:+553135049594" target="_blank"><i class="icon-ion-ios-call" style="padding-right: 5px;"></i> (31) 3504-9594</a>
+                                    <a href="tel:+55{telefone}" target="_blank"><i class="icon-ion-ios-call" style="padding-right: 5px;"></i>&nbsp;{telefone}</a>
                                 </p>
                                 <p>
-                                    <a href="https://api.whatsapp.com/send?phone=553135049594" target="_blank"><i class="fa fa-whatsapp" style="padding-right: 5px;"></i> (31) 3504-9594</a>
+                                    <a href="https://api.whatsapp.com/send?phone=+55{whatsapp}" target="_blank"><i class="fa fa-whatsapp" style="padding-right: 5px;"></i>&nbsp;{whatsapp}</a>
                                 </p>
                                 <p>
-                                    <a href="mailto:contato@dettomoveis.com.br" target="_blank"><i class="icon-md-mail" style="padding-right: 5px;"></i> contato@dettomoveis.com.br</a>
+                                    <a href="mailto:{email}" target="_blank"><i class="icon-md-mail" style="padding-right: 5px;"></i>&nbsp;{email}</a>
                                 </p>
                             </div>
                             <div class="lqd-column col-md-3 col-sm-6 pb-35">
                                 <h3 class="widget-title mb-30 text-white font-size-15 text-uppercase ltr-sp-1">Endereço</h3>
                                 <p>
-                                    <a href="https://goo.gl/maps/hshBGs4m3VXL1DHS9" target="_blank">
-                                        <i class="fa fa-map-marker" style="padding-right: 5px;"></i> Rua Gonçalves Dias, 872 <br />
-                                        Funcionários, Belo Horizonte - MG<br />
-                                        CEP: 30140-091
+                                    <a href="{endereco-url}" target="_blank">
+                                        <i class="fa fa-map-marker" style="padding-right: 5px;"></i>&nbsp;{endereco} <br />
+                                        {endereco-bairro}, {endereco-cidade-estado}<br />
+                                        CEP: {endereco-cep}
                                     </a>
                                 </p>
                             </div>
@@ -395,7 +314,7 @@
                                 <h3 class="widget-title mb-30 text-white font-size-15 text-uppercase ltr-sp-1">Rede Social</h3>
                                 <ul class="social-icon social-icon-lg">
                                     <li>
-                                        <a href="https://www.instagram.com/dettomobiliario/" target="_blank"><i class="fa fa-instagram" style="padding-right: 5px;"></i> Instagram</a>
+                                        <a href="{instagram}" target="_blank"><i class="fa fa-instagram" style="padding-right: 5px;"></i>&nbsp;Instagram</a>
                                     </li>
                                 </ul>
                             </div>
@@ -407,14 +326,14 @@
                         <div class="row">
                             <div class="lqd-column col-md-6"><p class="my-0 font-size-13">© Copyright {year} - Todos os Direitos Reservados</p></div>
                             <div class="lqd-column col-md-6 text-md-right">
-                                <a href="http://www.agenciahetsi.com.br" target="_blank"> <img src="./assets/img/logo_hetsi.png" alt="hetsi - Agência Web e Mobile" /> </a>
+                                <a href="http://www.agenciahetsi.com.br" target="_blank">&nbsp;<img src="./assets/img/logo_hetsi.png" alt="hetsi - Agência Web e Mobile" />&nbsp;</a>
                             </div>
                         </div>
                     </div>
                 </section>
             </footer>
             <a
-                href="https://api.whatsapp.com/send?phone=553135049594"
+                href="https://api.whatsapp.com/send?phone=+55{whatsapp}"
                 style="position: fixed; bottom: 25px; right: 30px; border-radius: 50px; text-align: center; font-size: 30px; z-index: 1000;"
                 target="_blank"
                 title="Fale com nossos consultores!"
@@ -425,11 +344,5 @@
         <script src="./assets/vendors/jquery.min.js"></script>
         <script src="./assets/js/theme-vendors.js"></script>
         <script src="./assets/js/theme.min.js"></script>
-		<script async>
-			document.addEventListener("DOMContentLoaded", () => {
-				LWDK.include("core/vars");
-				LWDK.include("plugins/cookies");
-			}, true);
-		</script>
     </body>
 </html>

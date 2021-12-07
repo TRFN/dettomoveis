@@ -28,7 +28,6 @@
     }
 
     spl_autoload_register(function($c) {
-        // echo $c;
         include(__paths::get()->templates . "/ux/{$c}.php");
     });
 
