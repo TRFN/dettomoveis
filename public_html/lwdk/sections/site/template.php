@@ -10,6 +10,7 @@
 		$menu = "";
 		$data = $this->database()->query("config", "name=menu");
 		foreach($data["content"] as $option){
+			
 			/*<li>
 				<a href="index.html">
 					<span class="link-icon"></span>

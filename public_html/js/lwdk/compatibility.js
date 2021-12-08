@@ -1,7 +1,7 @@
 (function(e){
 	function LWDKCompatibilityTools(e){
 		if(typeof LWDKExec == "undefined"){
-			this.LWDKExec = e["LWDKExec"] =  function LWDKExec(fn){
+			this.LWDKExec = e["LWDKExec"] = function LWDKExec(fn){
 				LWDK.init(fn);
 			};
 		}
@@ -39,15 +39,16 @@
 			};
 		}
 
-		String.prototype.clean = function(){return this}
+		if(typeof String.prototype.clean == "undefined"){
+			String.prototype.clean = function(){return this}
+		}
 	}
 
 	LWDK.reset.add(fn = (() => setTimeout(LWDK.compatibility.LWDKLinks, 1)));
-	LWDK.compatibility = new LWDKCompatibilityTools(e);
 
 	/* Setup */
 
 	LWDK.init(fn);
 
-	new LWDKCompatibilityTools(e);
+	LWDK.compatibility = new LWDKCompatibilityTools(e);
 })(window);

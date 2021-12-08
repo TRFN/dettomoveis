@@ -70,6 +70,8 @@
 			<script src="/js/lwdk/compatibility.js?url-prefix={URLPrefix}"></script>
 	        <script>
 	            LWDK.init(() => {
+					LWDK.include("plugins/animations");
+					LWDK.include("plugins/dataTools");
 					LWDK.include("plugins/badWords");
 	                LWDK.include("plugins/cookies");
 	                LWDK.include("plugins/cep");
