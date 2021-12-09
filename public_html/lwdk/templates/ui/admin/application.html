@@ -38,12 +38,15 @@
 			<script>
 				/* Additional Configuration */
 
-				LWDK.debug.active = 1;
+				// LWDK.debug.active = 1;
 				// LWDK.path = "/js/lwdk/";
+				// LWDK.sleepTime = 400;
 			</script>
 			<script src="/js/lwdk/compatibility.js?url-prefix={URLPrefix}"></script>
 	        <script>
 	            LWDK.init(() => {
+					LWDK.include("plugins/animations");
+					LWDK.include("plugins/dataTools");
 					// LWDK.include("plugins/badWords");
 	                // LWDK.include("plugins/cookies");
 	                LWDK.include("plugins/cep");

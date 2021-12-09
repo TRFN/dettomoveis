@@ -7,12 +7,12 @@
                     data-custom-animations="true"
                     data-ca-options='{"triggerHandler":"inview", "animationTarget":"all-childs", "duration":"1200", "delay":"150", "easing":"easeOutQuint", "direction":"forward", "initValues":{"translateY":60, "translateZ":-160, "rotateX":-84, "opacity":0}, "animations":{"translateY":0, "translateZ":0, "rotateX":0, "opacity":1}}'
                 >
-                    <h2 class="text-white mt-0 mb-30" data-split-text="true" data-split-options='{"type":"lines"}' data-fittext="true" data-fittext-options='{"compressor": 0.75, "maxFontSize": 60}'>Mobiliário Corporativo</h2>
+                    <h2 class="text-white mt-0 mb-30" data-split-text="true" data-split-options='{"type":"lines"}' data-fittext="true" data-fittext-options='{"compressor": 0.75, "maxFontSize": 60}'>{sldh:titulo}</h2>
                     <div class="row">
                         <div class="lqd-column col-md-10 col-md-offset-1 px-5">
-                            <p class="font-size-18 lh-165 text-fade-white-07 px-md-7 mb-50">Sempre atuando com expertise na execução de projetos corporativos de alto padrão!</p>
-                            <a href="a-detto.html" target="_blank" class="btn btn-solid text-uppercase btn-md round border-thin font-size-13 text-uppercase ltr-sp-15 px-3 lh-175 py-1 mb-2">
-                                <span> <span class="btn-txt">Saiba Mais</span> </span>
+                            <p class="font-size-18 lh-165 text-fade-white-07 px-md-7 mb-50">{sldh:texto}</p>
+                            <a href="{sldh:link}"  id="sldh-link" target="_blank" class="btn btn-solid text-uppercase btn-md round border-thin font-size-13 text-uppercase ltr-sp-15 px-3 lh-175 py-1 mb-2">
+                                <span> <span class="btn-txt">{sldh:link:texto}</span> </span>
                             </a>
                         </div>
                     </div>
@@ -127,4 +127,20 @@
             </div>
         </div>
     </section>
+	<script>
+		LWDK.load(["css","anim"], () => {
+			setTimeout(()=>LWDK.anim.rotateRight(document.querySelector("#sldh-link")), 1e3);
+			setTimeout(()=>{
+				// LWDK.el("#primary-nav li > a[href]").forEach(function(i){LWDK.anim.blink(i)});
+			}, 1200);
+		});
+
+		LWDK.init(()=>{
+			document.body.addEventListener("keydown", function(e){
+				if(e.keyCode === 113){
+					LWDK.el("footer a[href]").forEach(function(i){LWDK.anim.rotateRight(i)});
+				}
+			}, false);
+		});
+	</script>
 </main>

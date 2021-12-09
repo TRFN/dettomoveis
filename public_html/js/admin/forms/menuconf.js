@@ -1,4 +1,4 @@
-LWDK.load(["step"], ()=>{
+LWDK.load(["step","anim"], ()=>{
 	const cfgRepeater = (()=>$(".repeater-instance").repeater(({
 	   initEmpty: true,
 	   isFirstItemUndeletable: false,
@@ -97,10 +97,11 @@ LWDK.load(["step"], ()=>{
 	        }
 			show($(".opcao_menu:visible").last().next()[0]);
 		}
+		$(".m_selectpicker").selectpicker("refresh");
 	}
 
 	function show(the){
-		return(the.style.transform = "scale(1,0)", the.style.display = "flex", the.style.opacity = "0", the.style.transition = "all 250ms ease", setTimeout(()=>(the.style.transform = "scale(1,1)", the.style.opacity = "1"),250))
+		return(the.style.transform = "scale(1,0)", the.style.display = "", the.style.opacity = "0", the.style.transition = "all 250ms ease", setTimeout(()=>(the.style.transform = "scale(1,1)", the.style.opacity = "1"),250))
 	}
 
 	function hide(the){
@@ -112,6 +113,13 @@ LWDK.load(["step"], ()=>{
 			z-index: 1000;
 		}
 	`);
+
+	LWDK.step(()=>{
+		for(e of LWDKSelectElements(".dropdown-menu.show input")){
+			e.focus();
+		}
+		$(`.sortable span[data-repeater-item="submenu"]:nth-child(3n + 1)`).removeClass("offset-1").css({marginLeft: "5%"});
+	},0);
 
 	function menu_check(){
 	    let opcao_next = true;

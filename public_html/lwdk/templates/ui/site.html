@@ -79,13 +79,18 @@
 					LWDK.include("core/step");
 					LWDK.include("core/css");
 	            });
+
+				LWDK.load(["anim"], () => (
+					e = document.querySelector("footer").nextElementSibling,
+					LWDK.anim.shake(e, 32)
+				));
 	        </script>
         <!-- LWDK ENGINE With VanillaJS //END// -->
     </head>
     <body class="woocommerce single" data-mobile-nav-trigger-alignment="right" data-mobile-nav-align="left" data-mobile-nav-style="modern" data-mobile-nav-scheme="gray" data-mobile-header-scheme="gray" data-mobile-nav-breakpoint="1199">
         <noscript><iframe src="https://www.googletagmanager.com/ns.html?id={g_tag_manager}" height="0" width="0" style="display: none; visibility: hidden;"></iframe></noscript>
         <div id="wrap">
-            <header class="main-header main-header-overlay" data-sticky-header="true" data-sticky-options='{"stickyTrigger": "first-section"}'>
+            <header style="{bck-gradient}" class="main-header main-header-overlay" data-sticky-header="true" data-sticky-options='{"stickyTrigger": "first-section"}'>
                 <div class="secondarybar-wrap bb-fade-white-015">
                     <div class="container secondarybar-container">
                         <div class="secondarybar">
@@ -161,9 +166,7 @@
                                 </div>
                                 <div class="col">
                                     <div class="collapse navbar-collapse" id="main-header-collapse">
-                                        <ul id="primary-nav" class="main-nav nav align-items-lg-stretch justify-content-lg-end" data-submenu-options='{"toggleType":"fade", "handler":"mouse-in-out"}'>
-                                            {menu-principal}
-                                        </ul>
+                                        {menu-principal}
                                     </div>
 									<div class="header-module lqd-show-on-mobile">
 										<div class="ld-module-cart">

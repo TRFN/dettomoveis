@@ -65,9 +65,10 @@ const LWDK = window.LWDK = new function LWDK(){
 					break;
 				}
 			}
-			o ? c.init(f) : (setTimeout(() => fn(w, f, c), c.sleepTime));
+			o ? f() : (setTimeout(() => fn(w, f, c), c.sleepTime));
 		}
-		return(this.init(() => fn(w, f, this)));
+
+		setTimeout(() => fn(w, f, this), this.sleepTime)
 	}
 
 	this.load = loader;

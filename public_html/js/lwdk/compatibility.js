@@ -8,6 +8,7 @@
 
 		if(typeof LWDKSelectElements == "undefined"){
 			this.LWDKSelectElements = e["LWDKSelectElements"] = (sel) => Array.from(document.querySelectorAll(sel));
+			LWDK.el = (by) => this.LWDKSelectElements(by);
 		}
 
 		if(typeof LWDKInitFunction == "undefined"){

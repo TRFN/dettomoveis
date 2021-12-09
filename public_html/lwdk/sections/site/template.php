@@ -1,7 +1,19 @@
 <?php trait template_site {
 	function _template_(UITemplate $content) {
-		$this->load_menu($content);
-		$this->load_social($content);
+		$content = $this->load_menu($content);
+		$content = $this->load_social($content);
+
+		$content->applyVars([
+			"bck-gradient" => "
+				background: linear-gradient(
+								180deg,
+								rgba(0,0,0,0.6) 0%,
+								rgba(0,0,0,0.5) 30%,
+								rgba(0,0,0,0.4) 50%,
+								rgba(0,0,0,0) 100%
+							);
+			"
+		]);
 
 		return $content;
 	}
@@ -9,110 +21,62 @@
 	function load_menu(UITemplate $content){
 		$menu = "";
 		$data = $this->database()->query("config", "name=menu");
-		foreach($data["content"] as $option){
-			
-			/*<li>
-				<a href="index.html">
-					<span class="link-icon"></span>
-					<span class="link-txt">
-						<span class="link-ext"></span>
-						<span class="txt">
-							Home <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-						</span>
-					</span>
-				</a>
-			</li>
-			<li class="menu-item-has-children">
-				<a href="produtos.html">
-					<span class="link-icon"></span>
-					<span class="link-txt">
-						<span class="link-ext"></span>
-						<span class="txt">
-							Produtos <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-						</span>
-					</span>
-				</a>
-				<ul class="nav-item-children">
-					<li>
-						<a href="cadeiras.html">
-							<span class="link-icon"></span>
-							<span class="link-txt">
-								<span class="link-ext"></span>
-								<span class="txt">
-									Cadeiras <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
+		// $this->dbg($data);
+		foreach($data[0]["content"] as $option){
+			if(isset($option["submenu"]) && count($option["submenu"]) > 0){
+				/* Menu with Submenu */
+
+				$menu .= "<li class=\"menu-item-has-children\">
+							<a href=\"{$option["link"]}\">
+								<span class=\"link-icon\"></span>
+								<span class=\"link-txt\">
+									<span class=\"link-ext\"></span>
+									<span class=\"txt\">
+										{$option["texto"]} <span class=\"submenu-expander\">&nbsp;<i class=\"fa fa-angle-down\"></i>&nbsp;</span>
+									</span>
 								</span>
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="mobiliarios.html">
-							<span class="link-icon"></span>
-							<span class="link-txt">
-								<span class="link-ext"></span>
-								<span class="txt">
-									Mobiliários <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
+							</a>
+							<ul class=\"nav-item-children\">";
+
+				foreach($option["submenu"] as $suboption){
+					$menu .= "<li>
+								<a href=\"{$suboption["link"]}\">
+									<span class=\"link-icon\"></span>
+									<span class=\"link-txt\">
+										<span class=\"link-ext\"></span>
+										<span class=\"txt\">
+											{$suboption["texto"]}
+										</span>
+									</span>
+								</a>
+							</li>";
+				}
+
+				$menu .= "</ul></li>";
+			} else {
+				/* Menu Single */
+
+				$menu .= "<li>
+							<a href=\"{$option["link"]}\">
+								<span class=\"link-icon\"></span>
+								<span class=\"link-txt\">
+									<span class=\"link-ext\"></span>
+									<span class=\"txt\">
+										{$option["texto"]}
+									</span>
 								</span>
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="ambiente-externo.html">
-							<span class="link-icon"></span>
-							<span class="link-txt">
-								<span class="link-ext"></span>
-								<span class="txt">
-									Ambiente Externo <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-								</span>
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="persianas.html">
-							<span class="link-icon"></span>
-							<span class="link-txt">
-								<span class="link-ext"></span>
-								<span class="txt">
-									Persianas <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-								</span>
-							</span>
-						</a>
-					</li>
-					<li>
-						<a href="pisos.html">
-							<span class="link-icon"></span>
-							<span class="link-txt">
-								<span class="link-ext"></span>
-								<span class="txt">
-									Pisos <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-								</span>
-							</span>
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="a-detto.html">
-					<span class="link-icon"></span>
-					<span class="link-txt">
-						<span class="link-ext"></span>
-						<span class="txt">
-							A Detto <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-						</span>
-					</span>
-				</a>
-			</li>
-			<li>
-				<a href="contato.html">
-					<span class="link-icon"></span>
-					<span class="link-txt">
-						<span class="link-ext"></span>
-						<span class="txt">
-							Fale Conosco <span class="submenu-expander">&nbsp;<i class="fa fa-angle-down"></i>&nbsp;</span>
-						</span>
-					</span>
-				</a>
-			</li>*/
+							</a>
+						</li>";
+			}
 		}
+
+		$menu = "<ul id=\"primary-nav\" class=\"main-nav nav align-items-lg-stretch justify-content-lg-end\" data-submenu-options='{\"toggleType\":\"fade\", \"handler\":\"mouse-in-out\"}'>{$menu}</ul>";
+
+		// $this->dbg($menu);
+
+		$content->applyVars(["menu-principal" => $menu]);
+
+		return $content;
 	}
 
 	function load_social(UITemplate $content){
@@ -125,5 +89,7 @@
 				"logo-rodape" => isset($data["logotipo-dark"]) ? $data["logotipo-dark"] : "./assets/img/logo-mobile.png"
 			]);
 		}
+
+		return $content;
 	}
 } ?>
