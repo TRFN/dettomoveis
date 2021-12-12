@@ -245,11 +245,11 @@ const GetFormData = window.GetFormData = function GetFormData(context="html"){
     return result;
 };
 
-const Go = window.Go = ((url) => {
-    LWDKInitFunction.exec();
-    setTimeout((()=>history.pushState("","",`{URLPrefix}/${url}/`)),400);
-	initApp = false;
-});
+// const Go = window.Go = ((url) => {
+//     LWDKInitFunction.exec();
+//     setTimeout((()=>history.pushState("","",`{URLPrefix}/${url}/`)),400);
+// 	initApp = false;
+// });
 
 LWDKInitFunction.addFN(()=>$("select.m_selectpicker").each(function(){$('.js-dropdn-close').each(function(){this.click();}); return((s=One(this,"data__live__search")).length>0?s:{selectpicker:()=>{}}).selectpicker({liveSearch: true})}));
 

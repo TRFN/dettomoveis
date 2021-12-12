@@ -45,6 +45,7 @@
 			<script src="/js/lwdk/compatibility.js?url-prefix={URLPrefix}"></script>
 	        <script>
 	            LWDK.init(() => {
+					LWDK.debug.active = 1;
 					LWDK.include("plugins/animations");
 					LWDK.include("plugins/dataTools");
 					// LWDK.include("plugins/badWords");
@@ -122,5 +123,27 @@
         <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/inline/ckeditor.js"></script>
         <script src="https://cdn.ckeditor.com/ckeditor5/27.1.0/inline/translations/pt-br.js"></script>
         <script src="/js/jquery.inputmask.bundle.js"></script>
+		<script>
+			LWDK.load(["css"], () => LWDK.css(`
+				#m_header_nav {background-color: #fff}
+				::-webkit-scrollbar{
+					width: 10px;
+					height: 10px;
+				}
+				::-webkit-scrollbar-thumb{
+					background: #888;
+					border-radius: 0px;
+					border: 2px solid transparent;
+				}
+				::-webkit-scrollbar-thumb:hover{
+					background: #333;
+				}
+
+				::-webkit-scrollbar-track{
+					border: 10px solid #CCC;
+					border-radius: 0px;
+				}
+			`))
+		</script>
     </body>
 </html>

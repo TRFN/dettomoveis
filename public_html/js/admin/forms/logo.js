@@ -27,11 +27,12 @@ LWDKExec(function(){
                 $(".apagar").each(function(){
                     One(this).click(function(){
                         let the = $(this).parent().parent();
-                        if(confirm("Deseja mesmo remover esta logo?")){the.slideUp('slow', function(){
-                            $("#img_upload")[0].dropzone.enable();
-							$.post(LWDKLocal, {act: "erase", file: (f=$(this).parent().parent().find("#img:first").val())}, ()=>$(this).remove());
-							console.log(f);
-                        })}
+                        (confirm_msg("Deseja mesmo remover esta logo?", function(){
+							the.slideUp('slow', function(){
+                            	$("#img_upload")[0].dropzone.enable();
+								$.post(LWDKLocal, {act: "erase", file: (f=$(this).parent().parent().find("#img:first").val())}, ()=>$(this).remove());
+								console.log(f);
+                        })}));
                     });
                 });
             //
@@ -45,6 +46,7 @@ LWDKExec(function(){
 
             myDropzone.on("successmultiple", function(file, response) {
 				$.post("{myurl}", {imgs: response}, function(data){
+					LWDK.debug.post(data);
                     $("#gallery.start").removeClass("start").html("");
                     $("#gallery").append(data);
                     $("#img_upload")[0].dropzone.disable();
@@ -58,7 +60,7 @@ LWDKExec(function(){
     });
 
     const getLogoData = window.getLogoData = (() => {
-        return $("input#img").length?$("input#img").val():null;
+        return $("input.img").length?$("input.img").val():null;
     });
 
     const setLogoData = window.setLogoData = ((data) => {
@@ -80,4 +82,6 @@ LWDKExec(function(){
     });
 
     ({valuesof}) !== null && setLogoData(({valuesof}.data));
+
+	LWDK.debug.post({valuesof});
 });

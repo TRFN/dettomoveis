@@ -5,15 +5,21 @@
     		<div class="mr-auto">
     			<h3 class="m-subheader__title">{TITLE}</h3>
     		</div>
-    		<div>
-                <div class="col-7 text-right">
-                    <button class="btn btn-info" onclick="menu_salvar();"><i class="la la-save"></i><span class="d-none d-md-inline">&nbsp;Salvar</span></button>
+            <div>
+                <div class="col text-right">
+                    <button class="btn btn-outline-danger" onclick="return history.back()"><i class="la la-arrow-left"></i>&nbsp;Voltar</button>&nbsp;&nbsp;&nbsp;
+					<button class="btn btn-outline-success" onclick="return Go('../home',true)"><i class="la la-globe"></i>&nbsp;Ver no site</button>&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-info" onclick="document.querySelector('.m-form__actions .submit').click();"><i class="la la-save"></i>&nbsp;Salvar</button>
                 </div>
     		</div>
     	</div>
     </div>
     <!-- END: Subheader -->
-    <div class="m-content">
+	<div style="position: absolute; bottom: 40px; right: 40px; z-index: 1000; background: #fff; border-radius: 100%; padding: 16px;" class="loading">
+		<i class="fa fa-2x fa-sync fas fa-spin"></i>
+	</div>
+	<div class="m-content" style="filter: blur(10px) grayscale(100%); transition: filter 600ms ease-in-out;">
+
         <div class="m-4 text-center"><hr><br>
             <h4>Esta &aacute;rea e destinada a configura&ccedil;&atilde;o do menu de navega&ccedil;&atilde;o do seu site.</h4>
             <br>
@@ -28,4 +34,4 @@
     </div>
 </div>
 
-<script lwdk-addons lwdk-vars="on" src="js/admin/forms/menuconf.js"></script>
+<script lwdk-addons lwdk-vars="on" src="js/admin/detto/menuconf.js"></script>

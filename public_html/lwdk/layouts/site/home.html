@@ -1,5 +1,5 @@
 <main id="content" class="content">
-    <section class="vc_row py-5 fullheight d-flex flex-wrap align-items-center bg-cover bg-center" style="background-image: url(./assets/img/1.jpg);">
+    <section class="vc_row py-5 fullheight d-flex flex-wrap align-items-center bg-cover bg-center" style="background-image: url({sldh:img});">
         <div class="container">
             <div class="row">
                 <div
@@ -11,7 +11,7 @@
                     <div class="row">
                         <div class="lqd-column col-md-10 col-md-offset-1 px-5">
                             <p class="font-size-18 lh-165 text-fade-white-07 px-md-7 mb-50">{sldh:texto}</p>
-                            <a href="{sldh:link}"  id="sldh-link" target="_blank" class="btn btn-solid text-uppercase btn-md round border-thin font-size-13 text-uppercase ltr-sp-15 px-3 lh-175 py-1 mb-2">
+                            <a href="javascript:;" style="display:none!important{sldh:link};display:none!important{sldh:link:texto};" id="sldh-link" target="_blank" class="btn btn-solid text-uppercase btn-md round border-thin font-size-13 text-uppercase ltr-sp-15 px-3 lh-175 py-1 mb-2">
                                 <span> <span class="btn-txt">{sldh:link:texto}</span> </span>
                             </a>
                         </div>
@@ -128,8 +128,18 @@
         </div>
     </section>
 	<script>
+		if("{sldh:img}".length == 0){
+			document.querySelector("#content > section").style.backgroundImage = "url(assets/img/1.jpg)";
+		}
+
 		LWDK.load(["css","anim"], () => {
-			setTimeout(()=>LWDK.anim.rotateRight(document.querySelector("#sldh-link")), 1e3);
+			if("{sldh:link}".length > 0 && "{sldh:link:texto}".length > 0){
+				setTimeout(()=>LWDK.anim.rotateRight(document.querySelector("#sldh-link")), LWDK.sleepTime * 2);
+				document.querySelector("#sldh-link").setAttribute("href", "{sldh:link}");
+			}
+
+			LWDK.debug.post("{sldh:link}");
+			LWDK.debug.post("{sldh:img}");
 			setTimeout(()=>{
 				// LWDK.el("#primary-nav li > a[href]").forEach(function(i){LWDK.anim.blink(i)});
 			}, 1200);

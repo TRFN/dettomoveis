@@ -1,0 +1,187 @@
+<div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <!-- BEGIN: Subheader -->
+    <div class="m-subheader ">
+        <div class="d-flex align-items-center">
+            <div class="mr-auto">
+                <h3 class="m-subheader__title ">Configuração {pagina}</h3>
+            </div>
+            <div>
+                <div class="col text-right">
+                    <button class="btn btn-outline-danger" onclick="return history.back()"><i class="la la-arrow-left"></i>&nbsp;Voltar</button>&nbsp;&nbsp;&nbsp;
+					<button class="btn btn-outline-success" onclick="return Go('../home',true)"><i class="la la-globe"></i>&nbsp;Ver no site</button>&nbsp;&nbsp;&nbsp;
+                    <button class="btn btn-info" onclick="document.querySelector('.m-form__actions .submit').click();"><i class="la la-save"></i>&nbsp;Salvar</button>
+                </div>
+    		</div>
+        </div>
+    </div>
+    <!-- END: Subheader -->
+	<div style="position: absolute; bottom: 40px; right: 40px; z-index: 1000; background: #fff; border-radius: 100%; padding: 16px;" class="loading">
+		<i class="fa fa-2x fa-sync fas fa-spin"></i>
+	</div>
+	<div class="m-content" style="filter: blur(10px) grayscale(100%); transition: filter 600ms ease-in-out;">
+        <div class="row">
+            <div class="col-xl-12 col-lg-8">
+                <div class="m-portlet m-portlet--full-height m-portlet--tabs">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="slideshow">
+                            <div class="m-portlet__body">
+								<div class="form-group m-form__group row">
+									<div class="col-md-2"><br></div>
+									<div class="col-md-10 p-4 my-2 pt-0 mt-0">
+										<h3 style="color: #555; border-bottom: 2px solid #CCC; padding-bottom: 8px; width: 80%;">Topo da página</h3>
+									</div>
+								</div>
+								<div class="form-group m-form__group row"><div class="col-md-2"><br></div>
+                                <div id="gallery" class="col-md-8 row fotos-produto start"><div class="col text-center">Voc&ecirc; ainda n&atilde;o fez o upload de imagens...</div></div></div>
+                                <div class="form-group m-form__group row" id="img-fundo">
+                                    <div class="col-1"></div>
+                                    <div class="col-10" class="text-center">
+										<h3 class="col-form-label text-center" style="display: block;">Defina uma nova imagem para a capa da p&aacute;gina</h3>
+                                        <form action="{myurl}" method="post" class="col-12" id="img_upload" style="border: 0;">
+                                            <div class="m-dropzone" style="border: 0;">
+                                            <div class="m-dropzone__msg dz-message needsclick">
+                                                <h3 class="m-dropzone__msg-title m-btn m-btn--pill btn-outline-info btn" style="padding: 16px;">Clique aqui para realizar o upload</h3>
+                                            </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+								<div class="form-group m-form__group row">
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<label>
+											<b>Título:</b>
+											<input type="text" class="form-control m-input" data-name="titulo" data-option="text" />
+										</label>
+									</div>
+									<div class="col-md-2"></div>
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<label>
+											<b>Conteúdo:</b>
+											<textarea type=summernote data-name="texto" style="height: 100px" class="summernote"></textarea>
+										</label>
+									</div>
+									<div class="col-md-2"></div>
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<label>
+											<b>Texto do Botão:</b>
+											<input type="text" class="form-control m-input"  data-name="btn-texto" data-option="text" />
+										</label>
+									</div>
+									<div class="col-md-2"></div>
+
+
+									<div class="col-md-2"></div>
+									<div class="col-md-8">
+										<label>
+											<b>Link do Botão:</b>
+											<input type="text" class="form-control m-input" data-name="btn-link" data-option="text" />
+										</label>
+									</div>
+									<div class="col-md-2"></div>
+								</div>
+								<div class="form-group m-form__group row">
+									<div class="col-md-2"><br></div>
+									<div class="col-md-10 p-4 my-2 pt-0 mt-0">
+										<h3 style="color: #555; border-bottom: 2px solid #CCC; padding-bottom: 8px; width: 80%;">Conteúdo anterior ao rodapé</h3>
+									</div>
+								</div>
+								<div class="form-group m-form__group row">
+									<div class="col-md-2"></div>
+									<div class="form-group m-form__group col-md-3 row m-0" id="img-fundo">
+	                                    <div class="col-md-1"></div>
+	                                    <div class="col-md-10" class="text-center">
+											<h3 class="col-form-label text-center" style="display: block;">Defina uma nova imagem para a capa da p&aacute;gina</h3>
+	                                        <form action="{myurl}" method="post" class="col-12" id="img_upload2" style="border: 0;">
+	                                            <div class="m-dropzone" style="border: 0;">
+	                                            <div class="m-dropzone__msg dz-message needsclick">
+	                                                <h3 class="m-dropzone__msg-title m-btn m-btn--pill btn-outline-info btn" style="padding: 16px;">Clique aqui para realizar o upload</h3>
+	                                            </div>
+	                                            </div>
+	                                        </form>
+	                                    </div>
+	                                </div>
+									<div class="form-group m-form__group col-md-5">
+										<!-- <div class="col-md-2"></div> -->
+										<div class="col-md-12">
+											<label>
+												<b>Título:</b>
+												<input type="text" class="form-control m-input" data-name="titulo-rodape" data-option="text" />
+											</label>
+										</div>
+										<!-- <div class="col-md-2"></div> -->
+										<!-- <div class="col-md-2"></div> -->
+										<div class="col-md-12">
+											<label>
+												<b>Conteúdo:</b>
+												<textarea type=summernote data-name="texto-rodape" style="height: 100px" class="summernote"></textarea>
+											</label>
+										</div>
+										<!-- <div class="col-md-2"></div> -->
+										<!-- <div class="col-md-2"></div> -->
+										<div class="col-md-12">
+											<label>
+												<b>Texto do Botão:</b>
+												<input type="text" class="form-control m-input"  data-name="btn-texto-rodape" data-option="text" />
+											</label>
+										</div>
+										<!-- <div class="col-md-2"></div> -->
+
+
+										<!-- <div class="col-md-2"></div> -->
+										<div class="col-md-12">
+											<label>
+												<b>Link do Botão:</b>
+												<input type="text" class="form-control m-input" data-name="btn-link-rodape" data-option="text" />
+											</label>
+										</div>
+									</div>
+								</div>
+								<div class="form-group m-form__group row">
+									<div class="col-md-2"><br></div>
+									<div class="col-md-10 p-4 my-2 pt-0 mt-0">
+										<h3 style="color: #555; border-bottom: 2px solid #CCC; padding-bottom: 8px; width: 80%;">Imagem de fundo do rodapé</h3>
+									</div>
+								</div>
+								<div id="gallery" class="col-md-8 row fotos-produto2 start"><div class="col text-center">Voc&ecirc; ainda n&atilde;o fez o upload de imagens...</div></div></div>
+                                <div class="form-group m-form__group row" id="img-fundo2">
+                                    <div class="col-1"></div>
+                                    <div class="col-10" class="text-center">
+										<h3 class="col-form-label text-center" style="display: block;">Defina uma nova imagem para a capa da p&aacute;gina</h3>
+                                        <form action="{myurl}" method="post" class="col-12" id="img_upload" style="border: 0;">
+                                            <div class="m-dropzone" style="border: 0;">
+                                            <div class="m-dropzone__msg dz-message needsclick">
+                                                <h3 class="m-dropzone__msg-title m-btn m-btn--pill btn-outline-info btn" style="padding: 16px;">Clique aqui para realizar o upload</h3>
+                                            </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="col-12"><br></div>
+                            </div>
+                            <div class="m-portlet__foot m-portlet__foot--fit">
+								<div class="m-form__actions">
+									<div class="row">
+                                        <div class="col-12"><br>
+										</div>
+                                        <div class="col-md-4">
+										</div>
+                                        <div class="col-md-4 text-right">
+											<button class="btn btn-info submit btn-block"><i class="la la-save"></i>&nbsp;Salvar</button>
+										</div>
+                                            <div class="col-12"><br>
+    										</div>
+									</div>
+								</div>
+							</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script lwdk-addons lwdk-vars="on" src="js/admin/detto/pag_home.js"></script>

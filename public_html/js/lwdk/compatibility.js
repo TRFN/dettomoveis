@@ -26,6 +26,11 @@
 
 		if(typeof LWDKLinks == "undefined"){
 			this.LWDKLinks = e["LWDKLinks"] = function LWDKLinks(){
+				window.Go = function(url, newtab = false){
+					url = URLPrefix + "/" + url + "/";
+					!newtab ? ( window.top.location.href = url ) : window.open(url);
+				};
+
 				for (let a = LWDKSelectElements("a[ajax=on]"), i = 0; i < a.length; i++) {
 				    a[i].setAttribute("ajax", "off");
 				    a[i].href = location.origin + ( URLPrefix + a[i].href).split(location.origin).join("");

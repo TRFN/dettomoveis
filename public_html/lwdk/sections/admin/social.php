@@ -91,20 +91,16 @@
 			echo $this->model_imgstatic($content, $sec, "logomarca"); // Caso seja um modelo inteiro
 		}
 
-		function page_capa(UITemplate $content){
+		function page_pag(UITemplate $content){
 			$pag = -1;
 
+			$template = "capas";
+
 			switch(parent::url(1)){
-				case "home": 	      $pag = "Pagina Inicial"; break;
-				case "vela-virtual":  $pag = "Vela Virtual"; break;
-				case "doacoes":       $pag = "Doações"; break;
-				case "como-chegar":   $pag = "Como chegar"; break;
-				case "fale-conosco":  $pag = "Fale Conosco"; break;
-				case "oracoes":       $pag = "Doações"; break;
-				case "fotos":         $pag = "Fotos"; break;
-				case "videos":        $pag = "Videos"; break;
-				case "missas":        $pag = "Missas"; break;
-				case "novo-templo":   $pag = "Novo Templo"; break;
+				case "home":
+					$pag = "Pagina Inicial";
+					$template = "pag_home";
+				break;
 			}
 
 			if($pag===-1){
@@ -117,7 +113,7 @@
 
 			$this->action_imgstatic($sec, $folder); // Modelo Simples
 
-			echo $this->model_imgstatic($content, $sec, "capas", array("pagina"=>"&nbsp;<i class='fa fa-chevron-right fa-1x'></i> &nbsp;{$pag}"));
+			echo $this->model_imgstatic($content, $sec, $template, array("pagina"=>"&nbsp;<i class='fa fa-chevron-right fa-1x'></i> &nbsp;{$pag}"));
 		}
 
     }
